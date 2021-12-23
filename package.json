@@ -5,7 +5,9 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,9 @@
   },
   "homepage": "https://github.com/icastillejogomez/anti-adblock#readme",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
     "typescript": "^4.5.4"
   }
 }
