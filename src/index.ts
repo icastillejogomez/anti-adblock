@@ -10,6 +10,7 @@ interface AntiAdblockConfig {
     customFetchUrl?: URL,
   },
 }
+
 class AntiAdblock  {
 
   // Declare attributes
