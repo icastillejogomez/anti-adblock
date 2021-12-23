@@ -6,7 +6,7 @@ export function getRandomUrl(): URL {
 }
 
 // https://github1s.com/gorhill/uBlock/blob/master/docs/tests/hostname-pool.js#L9-L45762
-export const blacklist = [
+const blacklist = [
   'a',
   'b.a',
   'cb.a',
@@ -45759,4 +45759,4 @@ export const blacklist = [
   'zzptzdhugavot.review',
   'zzz.clickbank.net',
   '_thums.ero-advertising.com',
-  ]
+]

@@ -1,5 +1,5 @@
 // Blacklist import
-import { blacklist, DEFAULT_BLACKLIST_URL, getRandomUrl } from './blacklist'
+import { DEFAULT_BLACKLIST_URL, getRandomUrl } from './blacklist'
 
 interface AntiAdblockConfig {
   debug?: boolean,
