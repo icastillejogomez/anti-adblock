@@ -29,20 +29,28 @@ class AntiAdblock  {
       if (this.debug) console.debug('Initializing AntiAdblock')
       if (typeof window === 'undefined' || typeof document === 'undefined') throw new Error('This module only runs in the browser.')
       if (this.debug) console.debug('Wating to DOMContentLoaded event')
-      let resolved = false
-      window.addEventListener('DOMContentLoaded', () => {
-        resolved = true
-        this.ready = true
-        resolve()
-      })
+
+      const timeoutId = setTimeout(() => {
+        if(this.debug) console.log('Init timeout')
+        reject(new Error('AntiAdblock init max timeout reached'))
+      }, this.config?.initTimeout ?? 1000 * 10) // 10s
+
+      document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+          if (this.debug) console.log('DOMContentLoaded event received')
+          clearTimeout(timeoutId)
+          this.ready = true
+          resolve()
+        }
+      }
+      
+      if (this.debug) console.log(`document.readyState: ${document.readyState}`)
       if (document.readyState === 'complete') {
-        resolved = true
+        clearTimeout(timeoutId)
+        if (this.debug) console.log('Document is already prepared')
         this.ready = true
         resolve()
       }
-      setTimeout(() => {
-        if (!resolved) reject(new Error('AntiAdblock init max timeout reached'))
-      }, this.config?.initTimeout ?? 1000 * 10) // 10s
     })
   }
 
@@ -68,7 +76,7 @@ class AntiAdblock  {
       setTimeout(() => {
         isAdBlockPresent = $adElement.offsetHeight === 0
         resolve(isAdBlockPresent)
-      }, this.config?.classNameMethodTimeout ?? 100)
+      }, this.config?.classNameMethodTimeout ?? 1000 * 1)
     })
   }
 
