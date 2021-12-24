@@ -1,6 +1,6 @@
 {
   "name": "anti-adblock",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Simply anti-adblock esmodule ",
   "type": "commonjs",
   "private": false,
