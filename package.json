@@ -1,9 +1,10 @@
 {
   "name": "anti-adblock",
-  "version": "0.0.2",
+  "version": "0.0.12",
   "description": "Simply anti-adblock esmodule ",
-  "type": "module",
+  "type": "commonjs",
   "private": false,
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint src",
