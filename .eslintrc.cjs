@@ -21,6 +21,10 @@ module.exports = {
       'error',
       2
     ],
+    'no-trailing-spaces': [
+      'error',
+      { 'skipBlankLines': false, 'ignoreComments': false },
+    ],
     'linebreak-style': [
       'error',
       'unix'
