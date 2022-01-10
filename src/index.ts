@@ -43,7 +43,7 @@ class AntiAdblock  {
           resolve()
         }
       }
-      
+
       if (this.debug) console.log(`document.readyState: ${document.readyState}`)
       if (document.readyState === 'complete') {
         clearTimeout(timeoutId)
@@ -70,7 +70,7 @@ class AntiAdblock  {
     return new Promise((resolve) => {
       let isAdBlockPresent = false
       const adHtmlTag = document.createElement('div')
-      adHtmlTag.innerHTML = '&nbsp;'
+      adHtmlTag.innerHTML = '' // '&nbsp;'
       adHtmlTag.className = 'adsbox'
       const $adElement = document.body.appendChild(adHtmlTag)
       setTimeout(() => {
@@ -89,7 +89,7 @@ class AntiAdblock  {
         : this.config?.useRandomFetchUrlFromBlacklist
           ? getRandomUrl()
           : DEFAULT_BLACKLIST_URL
-      
+
       // Make request
       fetch(url.toString(), { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' })
         .then(() => {
