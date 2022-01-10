@@ -70,12 +70,13 @@ class AntiAdblock  {
     return new Promise((resolve) => {
       let isAdBlockPresent = false
       const adHtmlTag = document.createElement('div')
-      adHtmlTag.innerHTML = '' // '&nbsp;'
+      adHtmlTag.innerHTML = '&nbsp;'
       adHtmlTag.className = 'adsbox'
       const $adElement = document.body.appendChild(adHtmlTag)
       setTimeout(() => {
         isAdBlockPresent = $adElement.offsetHeight === 0
         resolve(isAdBlockPresent)
+        $adElement.remove()
       }, this.config?.classNameMethodTimeout ?? 1000 * 1)
     })
   }
